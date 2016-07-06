@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="414px" height="736px" viewBox="0 0 414 736" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #4A4A4A;">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Parent - All Tasks</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="172.524" y="13.728" width="68.952" height="38.376" rx="2.496"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="68.952" height="38.376" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Parent---All-Tasks">
+            <text id="Tasks" font-family="Avenir-Heavy, Avenir" font-size="24" font-weight="600" fill="#FFFFFF">
+                <tspan x="28.591887" y="104">Tasks</tspan>
+            </text>
+            <text id="Mow-the-lawn" font-family="Avenir-Light, Avenir" font-size="18" font-weight="300" fill="#FFFFFF">
+                <tspan x="36.275887" y="159">Mow the lawn</tspan>
+            </text>
+            <text id="Wash-the-car" font-family="Avenir-Light, Avenir" font-size="18" font-weight="300" fill="#FFFFFF">
+                <tspan x="35.960887" y="210">Wash the car</tspan>
+            </text>
+            <polyline id="Triangle-1" stroke="#FFFFFF" transform="translate(395.742822, 151.705574) rotate(-270.000000) translate(-395.742822, -151.705574) " points="381.742822 156.205574 395.742822 147.205574 395.742822 147.205574 409.742822 156.205574"></polyline>
+            <polyline id="Triangle-1" stroke="#FFFFFF" transform="translate(395.742822, 203.947378) rotate(-270.000000) translate(-395.742822, -203.947378) " points="381.742822 208.447378 395.742822 199.447378 395.742822 199.447378 409.742822 208.447378"></polyline>
+            <polyline id="Triangle-1" stroke="#FFFFFF" transform="translate(399.316120, 345.036414) rotate(-270.000000) translate(-399.316120, -345.036414) " points="385.31612 349.536414 399.31612 340.536414 399.31612 340.536414 413.31612 349.536414"></polyline>
+            <polyline id="Triangle-1" stroke="#FFFFFF" transform="translate(399.229081, 395.722151) rotate(-270.000000) translate(-399.229081, -395.722151) " points="385.229081 400.222151 399.229081 391.222151 399.229081 391.222151 413.229081 400.222151"></polyline>
+            <path d="M21.6317158,125 L414,125" id="Path-43" stroke="#7ED321"></path>
+            <path d="M21.6317158,177 L414,177" id="Path-43" stroke="#7ED321"></path>
+            <path d="M21.6317158,229 L414,229" id="Path-43" stroke="#7ED321"></path>
+            <path d="M21.6317158,318.425542 L414,318.425542" id="Path-43" stroke="#7ED321"></path>
+            <path d="M21.6317158,370.425542 L414,370.425542" id="Path-43" stroke="#7ED321"></path>
+            <path d="M21.6317158,422.425542 L414,422.425542" id="Path-43" stroke="#7ED321"></path>
+            <g id="Group">
+                <rect id="Rectangle-64" fill="#656B72" x="0" y="0" width="414" height="66"></rect>
+                <use id="Rectangle-1" stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="3.744" fill="#7ED321" xlink:href="#path-1"></use>
+                <text id="S" font-family="DINCondensed-Bold, DIN Condensed" font-size="19.968" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="202.946496" y="39.2220221">S</tspan>
+                </text>
+                <rect id="Rectangle-2" fill="#FFFFFF" x="206.376" y="22.5919376" width="1.56" height="3.432"></rect>
+                <rect id="Rectangle-2" fill="#FFFFFF" x="206.376" y="38.8404779" width="1.56" height="3.432"></rect>
+                <g id="Group-3" transform="translate(17.438764, 22.500000)" stroke="#FFFFFF">
+                    <path d="M0.140385664,1.52834978 L30.8716419,1.52834978" id="Path-37"></path>
+                    <path d="M0.140385664,10.7360841 L30.8716419,10.7360841" id="Path-37"></path>
+                    <path d="M0.140385664,19.9438185 L30.8716419,19.9438185" id="Path-37"></path>
+                </g>
+            </g>
+            <text id="Goals" font-family="Avenir-Heavy, Avenir" font-size="24" font-weight="600" fill="#FFFFFF">
+                <tspan x="29.2719997" y="297.425542">Goals</tspan>
+            </text>
+            <text id="Save-$100" font-family="Avenir-Light, Avenir" font-size="18" font-weight="300" fill="#FFFFFF">
+                <tspan x="35.917887" y="350.425542">Save $100</tspan>
+            </text>
+            <text id="Save-$50-for-2-month" font-family="Avenir-Light, Avenir" font-size="16" font-weight="300" fill="#FFFFFF">
+                <tspan x="36.2799997" y="402.425542">Save $50 for 2 months</tspan>
+            </text>
+            <text id="$20.00" font-family="Avenir-Medium, Avenir" font-size="20" font-weight="400" fill="#FFFFFF">
+                <tspan x="297.292325" y="403.469542">$20.00</tspan>
+            </text>
+            <text id="$10.00" font-family="Avenir-Medium, Avenir" font-size="20" font-weight="400" fill="#FFFFFF">
+                <tspan x="297.292325" y="352.425542">$10.00</tspan>
+            </text>
+            <text id="$5.00" font-family="Avenir-Medium, Avenir" font-size="20" font-weight="400" fill="#FFFFFF">
+                <tspan x="297.352325" y="212">$5.00</tspan>
+            </text>
+            <text id="$4.50" font-family="Avenir-Medium, Avenir" font-size="20" font-weight="400" fill="#FFFFFF">
+                <tspan x="297.352325" y="159">$4.50</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
