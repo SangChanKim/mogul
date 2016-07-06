@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:src="@drawable/logo_login"
         />
 
@@ -23,7 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
+        android:hint="Username"
+        android:textColorHint="#FFFFFF"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -32,6 +35,8 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:layout_centerHorizontal="true"
+        android:hint="Password"
+        android:textColorHint="#FFFFFF"
         android:layout_below="@id/username"
         />
 
@@ -41,7 +46,18 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/password"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/login_button" />
+        android:layout_marginTop="15dp"
+        android:background="@color/lime_green"
+        android:src="@drawable/login_button_v3" />
+
+    <ImageButton
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/signin"
+        android:background="@color/lime_green"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/signup_button" />
 
 </RelativeLayout>
