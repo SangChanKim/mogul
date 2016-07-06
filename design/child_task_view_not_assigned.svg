@@ -65,12 +65,6 @@
             <text id="ASSIGNED-TO" font-family="Avenir-Light, Avenir" font-size="14" font-weight="300" fill="#FFFFFF">
                 <tspan x="30.5632842" y="464">ASSIGNED TO</tspan>
             </text>
-            <g id="add_button" transform="translate(40.368284, 495.735479)">
-                <circle id="Oval-22" stroke="#FFFFFF" cx="14.4567048" cy="13.5791866" r="13.5"></circle>
-                <text id="+" font-family="Avenir-Light, Avenir" font-size="18" font-weight="300" fill="#FFFFFF">
-                    <tspan x="9.006" y="19">+</tspan>
-                </text>
-            </g>
             <path d="M22,470 L414.368284,470" id="Path-43" stroke="#7ED321"></path>
             <g id="Group-5" transform="translate(79.000000, 490.000000)">
                 <g id="sang" transform="translate(20.527042, 14.630863)">
