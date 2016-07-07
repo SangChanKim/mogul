@@ -1,6 +1,8 @@
 package com.example.jxw679.mogul.model;
 
 import java.util.List;
+import java.util.Map;
+
 /**
  * Created by jxw679 on 7/6/16.
  */
@@ -13,7 +15,7 @@ public class Child {
     private String accountid;
     private int balance;
     private List<String> parents;
-    private List<Task> tasks;
+    private Map<String, Task> tasks;
     private String type;
     private String uid;
 
@@ -21,7 +23,7 @@ public class Child {
 
     }
 
-    public Child(String username, String email, String firstname, String lastname, String accountid, int balance, String type, String uid, List<String> parents, List<Task> tasks) {
+    public Child(String username, String email, String firstname, String lastname, String accountid, int balance, String type, String uid, List<String> parents, Map<String, Task> tasks) {
         this.username = username;
         this.email = email;
         this.firstname = firstname;
@@ -102,7 +104,7 @@ public class Child {
         this.parents = parents;
     }
 
-    public void setTasks(List<Task> tasks) {
+    public void setTasks(Map<String, Task> tasks) {
         this.tasks = tasks;
     }
 
@@ -110,7 +112,7 @@ public class Child {
         return parents;
     }
 
-    public List<Task> getTasks() {
+    public Map<String, Task> getTasks() {
         return tasks;
     }
 
@@ -119,10 +121,11 @@ public class Child {
         for (String child: parents) {
             parentsString += child + "\n";
         }
+
         String tasksString = "";
-        for (Task task: tasks) {
+        /*for (Task task: tasks) {
             tasksString += task.toString() + "\n";
-        }
+        }*/
         return username + "\n" + email + "\n" + firstname + " \n" + lastname + "\n" + accountid + "\n" + balance + "\n" + type + "\n" + uid + "\n" + parentsString + tasksString;
     }
 }

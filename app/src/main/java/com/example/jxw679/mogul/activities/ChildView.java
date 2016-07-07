@@ -77,17 +77,17 @@ public class ChildView extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             ChildView.child = dataSnapshot.getValue(Child.class);
-                            System.out.println(child.toString());
 
                             child.setUsername(child.getEmail());
                             child.setUid(dataSnapshot.getKey());
 
                             TextView childName = (TextView) findViewById(R.id.child_name);
+                            System.out.println(child.getFirstname());
                             childName.setText(child.getFirstname() +  " " + child.getLastname());
 
                             TextView balance = (TextView) findViewById(R.id.child_balance);
                             System.out.println(child.getBalance());
-                            balance.setText(child.getBalance());
+                            balance.setText(String.valueOf(child.getBalance()));
 
                             generateListContent();
 
@@ -108,7 +108,7 @@ public class ChildView extends AppCompatActivity {
     }
 
     private void generateListContent() {
-        for (Task task: child.getTasks()) {
+        for (Task task: child.getTasks().values()) {
             data.add(task);
         }
 
@@ -132,16 +132,16 @@ public class ChildView extends AppCompatActivity {
                 ViewHolder viewHolder = new ViewHolder();
 
                 Task currentTask = (Task) this.getItem(position);
-                viewHolder.name = (TextView) convertView.findViewById(R.id.child_name);
-                viewHolder.name.setText(currentTask.getTaskname());
-                viewHolder.balance = (TextView) convertView.findViewById(R.id.child_balance);
+                viewHolder.name = (TextView) convertView.findViewById(R.id.task_text);
+                viewHolder.name.setText(currentTask.taskname);
+                viewHolder.balance = (TextView) convertView.findViewById(R.id.task_amount);
 
                 Double currencyAmount = new Double(currentTask.getReward());
                 Currency currentCurrency = Currency.getInstance(Locale.US);
                 NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
 
                 viewHolder.balance.setText(currencyFormatter.format(currencyAmount));
-                viewHolder.button = (ImageButton) convertView.findViewById(R.id.button);
+                //viewHolder.button = (ImageButton) convertView.findViewById(R.id.button);
                 viewHolder.button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
