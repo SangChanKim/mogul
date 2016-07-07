@@ -5,7 +5,7 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="child_task_view" transform="translate(-101.000000, -648.000000)">
+        <g id="child_task_view_not_assigned" transform="translate(-101.000000, -648.000000)">
             <g id="request_button" transform="translate(101.000000, 648.000000)">
                 <rect id="Rectangle-68" fill="#7ED321" x="0" y="0" width="211.985006" height="68" rx="8"></rect>
                 <text id="request-task" font-family="Avenir-Book, Avenir" font-size="26" font-weight="normal" fill="#FFFFFF">

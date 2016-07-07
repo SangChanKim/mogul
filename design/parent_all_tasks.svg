@@ -3,15 +3,16 @@
     <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
     <title>parent_all_tasks</title>
     <desc>Created with Sketch.</desc>
-    <defs>
-        <rect id="path-1" x="172.524" y="13.728" width="68.952" height="38.376" rx="2.496"></rect>
-        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="68.952" height="38.376" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-    </defs>
+    <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="parent_all_tasks">
             <rect id="Rectangle-81" fill="#4A4A4A" x="0.0192538672" y="0" width="414" height="736"></rect>
+            <g id="add_button" transform="translate(372.242822, 278.425542)">
+                <circle id="Oval-22" stroke="#FFFFFF" cx="14.4567048" cy="13.5791866" r="13.5"></circle>
+                <text id="+" font-family="Avenir-Light, Avenir" font-size="18" font-weight="300" fill="#FFFFFF">
+                    <tspan x="9.006" y="19">+</tspan>
+                </text>
+            </g>
             <text id="Tasks" font-family="Avenir-Heavy, Avenir" font-size="24" font-weight="600" fill="#FFFFFF">
                 <tspan x="28.591887" y="104">Tasks</tspan>
             </text>
@@ -31,20 +32,7 @@
             <path d="M21.6317158,318.425542 L414,318.425542" id="Path-43" stroke="#7ED321"></path>
             <path d="M21.6317158,370.425542 L414,370.425542" id="Path-43" stroke="#7ED321"></path>
             <path d="M21.6317158,422.425542 L414,422.425542" id="Path-43" stroke="#7ED321"></path>
-            <g id="Group">
-                <rect id="Rectangle-64" fill="#656B72" x="0" y="0" width="414" height="66"></rect>
-                <use id="Rectangle-1" stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="3.744" fill="#7ED321" xlink:href="#path-1"></use>
-                <text id="S" font-family="DINCondensed-Bold, DIN Condensed" font-size="19.968" font-weight="bold" fill="#FFFFFF">
-                    <tspan x="202.946496" y="39.2220221">S</tspan>
-                </text>
-                <rect id="Rectangle-2" fill="#FFFFFF" x="206.376" y="22.5919376" width="1.56" height="3.432"></rect>
-                <rect id="Rectangle-2" fill="#FFFFFF" x="206.376" y="38.8404779" width="1.56" height="3.432"></rect>
-                <g id="Group-3" transform="translate(17.438764, 22.500000)" stroke="#FFFFFF">
-                    <path d="M0.140385664,1.52834978 L30.8716419,1.52834978" id="Path-37"></path>
-                    <path d="M0.140385664,10.7360841 L30.8716419,10.7360841" id="Path-37"></path>
-                    <path d="M0.140385664,19.9438185 L30.8716419,19.9438185" id="Path-37"></path>
-                </g>
-            </g>
+            <rect id="navbar" fill="#656B72" x="0" y="0" width="414" height="66"></rect>
             <text id="Goals" font-family="Avenir-Heavy, Avenir" font-size="24" font-weight="600" fill="#FFFFFF">
                 <tspan x="29.2719997" y="297.425542">Goals</tspan>
             </text>
@@ -66,6 +54,18 @@
             <text id="$4.50" font-family="Avenir-Medium, Avenir" font-size="20" font-weight="400" fill="#FFFFFF">
                 <tspan x="297.352325" y="159">$4.50</tspan>
             </text>
+            <g id="add_button" transform="translate(372.242822, 85.000000)">
+                <circle id="Oval-22" stroke="#FFFFFF" cx="14.4567048" cy="13.5791866" r="13.5"></circle>
+                <text id="+" font-family="Avenir-Light, Avenir" font-size="18" font-weight="300" fill="#FFFFFF">
+                    <tspan x="9.006" y="19">+</tspan>
+                </text>
+            </g>
+            <g id="back_button" transform="translate(17.000000, 19.000000)">
+                <polyline id="Triangle-1" stroke="#FFFFFF" transform="translate(4.631716, 14.000000) rotate(-90.000000) translate(-4.631716, -14.000000) " points="-9.36828418 18.5 4.63171582 9.5 4.63171582 9.5 18.6317158 18.5"></polyline>
+                <text id="Back" font-family="Avenir-Book, Avenir" font-size="18" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="18.8029997" y="21">Back</tspan>
+                </text>
+            </g>
         </g>
     </g>
 </svg>

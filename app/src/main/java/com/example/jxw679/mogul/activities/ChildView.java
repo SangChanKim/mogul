@@ -3,6 +3,9 @@ package com.example.jxw679.mogul.activities;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +13,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Button;
+import android.text.Spannable;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.TextUtils;
 
 import com.example.jxw679.mogul.R;
 
@@ -27,7 +36,21 @@ public class ChildView extends AppCompatActivity {
         setContentView(R.layout.activity_child_view);
         ListView lv = (ListView) findViewById(R.id.child_list);
         generateListContent();
-        lv.setAdapter(new MyListAdapter(this, R.layout.child_list_item, data));
+        //lv.setAdapter(new MyListAdapter(this, R.layout.child_list_item, data));
+
+        RelativeLayout task_button = (RelativeLayout) findViewById(R.id.task_button_layout);
+        task_button.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View view) {
+                                               // go to task view page
+                                           }
+                                       });
+
+        TextView task_text = (TextView) findViewById(R.id.task_text);
+        TextView task_amount = (TextView) findViewById(R.id.task_amount);
+
+
+        // We need to find all the tasks for the given child and parse them here
     }
 
     private void generateListContent() {
