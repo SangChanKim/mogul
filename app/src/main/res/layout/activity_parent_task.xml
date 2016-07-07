@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:text="Task name"
         android:textSize="48dp"
+        android:textColor="@android:color/white"
         android:id="@+id/task_name_edit"
         android:layout_below="@id/navbar"
         android:layout_marginTop="15dp"
@@ -114,5 +115,18 @@ you don’t miss a spot."
         android:layout_below="@+id/assign_to_label"
         android:layout_marginLeft="30dp"
         android:background="@color/lime_green" />
+
+    <ImageButton
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:src="@drawable/add_button"
+        android:layout_below="@id/separator_3"
+        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@id/assign_to_label"
+        />
 
 </RelativeLayout>
