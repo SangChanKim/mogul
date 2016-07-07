@@ -10,8 +10,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
+        android:id="@+id/navbar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:src="@drawable/navbar"/>
@@ -20,19 +19,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/back_button"
-        android:src="@drawable/back_button"
-        android:layout_alignTop="@+id/profile_pic"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="26dp" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="18dp"
+        android:background="null"
+        android:src="@drawable/back_button"/>
 
     <ImageView
         android:id="@+id/profile_pic"
         android:layout_width="125dp"
         android:layout_height="125dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/welcome"
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/navbar"
         android:src="@drawable/default_profile_pic"
         />
 
