@@ -53,6 +53,7 @@ public class ParentView extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent =  new Intent(getApplicationContext(), AddTask.class);
                 intent.putExtra("child_list", data);
+                intent.putExtra("parent", parent.getUid());
                 startActivity(intent);
             }
         });
@@ -68,6 +69,7 @@ public class ParentView extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             ParentView.parent = dataSnapshot.getValue(Parent.class);
                             parent.setUsername(parent.getEmail());
+                            parent.setUid(dataSnapshot.getKey());
                             TextView parentName = (TextView) findViewById(R.id.parent_name);
                             parentName.setText(parent.getFirstname() +  " " + parent.getLastname());
                             System.out.println(parent.toString());

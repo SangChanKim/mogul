@@ -31,6 +31,7 @@ public class AddTask extends AppCompatActivity {
     private Intent prevIntent;
     private ArrayList<Child> child_list;
     private Spinner spinner;
+    private String parent_id;
 
 
     @Override
@@ -38,6 +39,7 @@ public class AddTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         prevIntent = getIntent();
+        parent_id = (String) prevIntent.getExtras().get("parent");
         child_list = (ArrayList<Child>) prevIntent.getExtras().get("child_list");
         taskName = (EditText) findViewById(R.id.task_name_edit);
         description = (EditText) findViewById(R.id.description_edit);
@@ -84,6 +86,7 @@ public class AddTask extends AppCompatActivity {
         req.setReward(Integer.parseInt(price.getText().toString()));
         req.setDescription(description.getText().toString());
         req.setOwner(ParentView.parent.getUid());
+        req.setType("addTask");
 
         int pos = spinner.getSelectedItemPosition();
         req.setAssignto(ParentView.parent.getChildren().get(pos));
