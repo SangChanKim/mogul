@@ -50,10 +50,29 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Balance"
-        android:id="@+id/balance"
+        android:id="@+id/balance_text"
         android:layout_below="@+id/name"
-        android:
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
         />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/balance_text"
+        android:layout_marginLeft="30dp"
+        android:background="@android:color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="80dp"
+        android:text="$40.00"
+        android:id="@+id/balance"
+        android:layout_below="@+id/name"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        />
 
 </RelativeLayout>
