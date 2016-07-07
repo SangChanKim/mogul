@@ -46,7 +46,7 @@
         android:layout_marginLeft="45dp"
         android:backgroundTint="@color/lime_green"
         android:hint="Task Name"
-        />
+        android:inputType="text" />
 
     <EditText
         android:layout_width="300dp"
