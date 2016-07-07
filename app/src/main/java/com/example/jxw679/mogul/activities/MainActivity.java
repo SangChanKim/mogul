@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import android.widget.*;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -45,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
