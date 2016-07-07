@@ -23,9 +23,9 @@ public class AddTask extends AppCompatActivity {
     private EditText description;
     private EditText price;
     private EditText deadline;
-    private ImageButton assign;
     private ImageButton backButton;
     private ImageButton createTask;
+    private Spinner spinner;
 
 
     @Override
@@ -37,7 +37,6 @@ public class AddTask extends AppCompatActivity {
         description = (EditText) findViewById(R.id.description_edit);
         price = (EditText) findViewById(R.id.price_edit);
         deadline = (EditText) findViewById(R.id.deadline_edit);
-        assign = (ImageButton) findViewById(R.id.add_child_to_task);
         backButton = (ImageButton) findViewById(R.id.back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,11 +54,12 @@ public class AddTask extends AppCompatActivity {
         });
 
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        spinner = (Spinner) findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         String[] names = new String[ParentView.parent.getChildren().size()];
         for (int i = 0; i < names.length; i++) {
-            names[i] = ParentView.parent.getChildren().get(i);
+            names[i] = ParentView.data.get(i).getFirstname();
         }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, names);
         // Specify the layout to use when the list of choices appears
@@ -69,13 +69,17 @@ public class AddTask extends AppCompatActivity {
     }
 
     private void sendRequestForTask() {
+
         TaskRequest req = new TaskRequest();
         req.setTaskname(taskName.getText().toString());
         req.setDeadline(deadline.getText().toString());
         req.setReward(Integer.parseInt(price.getText().toString()));
         req.setDescription(description.getText().toString());
         req.setOwner(ParentView.parent.getUid());
-        req.setAssignto("GwTHM4mXnfYDgsP24cjnqh4YsRA2");
+
+        int pos = spinner.getSelectedItemPosition();
+        req.setAssignto(ParentView.parent.getChildren().get(pos));
+        System.out.println("ASSIGNTO: " + req.getAssignto());
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         ref.child("/requests").push().setValue(req);
     }
