@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -46,14 +47,13 @@ public class ParentView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_view);
-        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
-        swipeRefreshLayout.setRefreshing(false);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        Button addTask = (Button) findViewById(R.id.add_task);
+        addTask.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onRefresh() {
-                finish();
-                startActivity(getIntent());
-                swipeRefreshLayout.setRefreshing(false);
+            public void onClick(View view) {
+                Intent intent =  new Intent(getApplicationContext(), AddTask.class);
+                intent.putExtra("child_list", data);
+                startActivity(intent);
             }
         });
 
