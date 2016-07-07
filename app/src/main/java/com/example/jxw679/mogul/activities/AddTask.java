@@ -11,10 +11,13 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import com.example.jxw679.mogul.R;
+import com.example.jxw679.mogul.model.Child;
 import com.example.jxw679.mogul.model.Task;
 import com.example.jxw679.mogul.model.requests.TaskRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class AddTask extends AppCompatActivity {
 
@@ -25,14 +28,19 @@ public class AddTask extends AppCompatActivity {
     private EditText deadline;
     private ImageButton backButton;
     private ImageButton createTask;
+    private Intent prevIntent;
+    private ArrayList<Child> child_list;
     private Spinner spinner;
+    private String parent_id;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-
+        prevIntent = getIntent();
+        parent_id = (String) prevIntent.getExtras().get("parent");
+        child_list = (ArrayList<Child>) prevIntent.getExtras().get("child_list");
         taskName = (EditText) findViewById(R.id.task_name_edit);
         description = (EditText) findViewById(R.id.description_edit);
         price = (EditText) findViewById(R.id.price_edit);
@@ -50,6 +58,8 @@ public class AddTask extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendRequestForTask();
+                Intent intent = new Intent(getApplicationContext(), ParentView.class);
+                startActivity(intent);
             }
         });
 
@@ -57,9 +67,9 @@ public class AddTask extends AppCompatActivity {
 
         spinner = (Spinner) findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
-        String[] names = new String[ParentView.parent.getChildren().size()];
-        for (int i = 0; i < names.length; i++) {
-            names[i] = ParentView.data.get(i).getFirstname();
+        String[] names = new String[child_list.size()];
+        for (int i = 0; i < child_list.size(); i++) {
+            names[i] = child_list.get(i).getFirstname();
         }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, names);
         // Specify the layout to use when the list of choices appears
@@ -76,6 +86,7 @@ public class AddTask extends AppCompatActivity {
         req.setReward(Integer.parseInt(price.getText().toString()));
         req.setDescription(description.getText().toString());
         req.setOwner(ParentView.parent.getUid());
+        req.setType("addTask");
 
         int pos = spinner.getSelectedItemPosition();
         req.setAssignto(ParentView.parent.getChildren().get(pos));

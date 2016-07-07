@@ -1,9 +1,11 @@
 package com.example.jxw679.mogul.model;
 
+import java.io.Serializable;
+
 /**
  * Created by jxw679 on 7/6/16.
  */
-public class Task {
+public class Task implements Serializable{
     public String deadline;
     public String description;
     public String owner;

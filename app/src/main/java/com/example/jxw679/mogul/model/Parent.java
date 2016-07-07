@@ -1,12 +1,14 @@
 package com.example.jxw679.mogul.model;
 
 import android.os.Build;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by jxw679 on 7/6/16.
  */
-public class Parent {
+public class Parent implements Serializable{
     private List<String> children;
     private String customerid;
     private String username;
