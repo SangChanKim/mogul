@@ -10,10 +10,12 @@ public class TaskRequest {
     public String taskname;
     public int reward;
     public String assignto;
+    public String type;
 
     public TaskRequest() {
 
     }
+
 
     public TaskRequest(String deadline, String description, String owner, String taskname, boolean completed, int reward, String assignto) {
         this.deadline = deadline;
@@ -22,6 +24,16 @@ public class TaskRequest {
         this.taskname = taskname;
         this.reward = reward;
         this.assignto = assignto;
+        this.type = "addTask";
+
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public void setAssignto(String assignto) {
