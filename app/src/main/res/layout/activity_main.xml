@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
         android:layout_marginTop="25dp"
-        android:hint="Username"
+        android:hint="sck970112@gmail.com"
         android:textColorHint="#FFFFFF"
         android:layout_centerHorizontal="true" />
 
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:layout_centerHorizontal="true"
-        android:hint="Password"
+        android:hint="sangchankim"
         android:textColorHint="#FFFFFF"
         android:layout_below="@id/username"
         />
