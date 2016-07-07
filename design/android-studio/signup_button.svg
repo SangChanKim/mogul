@@ -15,7 +15,7 @@
    id="svg3447"
    inkscape:version="0.91 r13725"
    sodipodi:docname="signup_button.svg"
-   inkscape:export-filename="C:\Users\hkp925\Documents\GitHub\mogul\design\android-studio\login_button.png"
+   inkscape:export-filename="C:\Users\hkp925\Documents\GitHub\mogul\design\android-studio\signup_button.png"
    inkscape:export-xdpi="180"
    inkscape:export-ydpi="180">
   <metadata
@@ -89,15 +89,17 @@
      y="0"
      width="100%"
      height="100%"
-     clip-path="url(#clipPath3352)" />
+     clip-path="url(#clipPath3352)"
+     transform="translate(-3.054738e-6,0)" />
   <text
      style="font-weight:normal;font-size:26px;font-family:Avenir-Book, Avenir;fill:#7ed321;fill-rule:evenodd;stroke:none;stroke-width:1"
      font-weight="normal"
      font-size="26"
-     id="login">
+     id="login"
+     x="-9.5761223">
     <tspan
        id="tspan3466"
        y="43"
-       x="65.879997">login</tspan>
+       x="56.303875">signup</tspan>
   </text>
 </svg>

@@ -31,6 +31,7 @@
         android:layout_below="@id/logo"
         android:layout_marginTop="25dp"
         android:hint="email"
+        android:inputType="textEmailAddress"
         android:textColorHint="#FFFFFF"
         android:layout_centerHorizontal="true" />
 
