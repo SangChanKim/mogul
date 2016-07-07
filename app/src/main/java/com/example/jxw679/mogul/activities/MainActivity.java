@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.content.Intent;
+import java.util.Map;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,7 +25,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import com.example.jxw679.mogul.model.User;
 import com.example.jxw679.mogul.R;
 
 
@@ -78,25 +78,30 @@ public class MainActivity extends AppCompatActivity {
                                     if (user != null) {
                                         String uid = user.getUid();
                                         System.out.println("UID: " + uid);
-                                        /*mDatabase = FirebaseDatabase.getInstance().getReference();
+                                        mDatabase = FirebaseDatabase.getInstance().getReference();
                                         mDatabase.child("users").child(uid).addListenerForSingleValueEvent(
                                                 new ValueEventListener() {
                                                     @Override
                                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                                         // Get user value
-                                                        Object s = dataSnapshot.getValue();
-                                                        System.out.println(s.toString());
-
-                                                        // ...
+                                                        Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
+                                                        String type = (String) map.get("type");
+                                                        System.out.println(type);
+                                                        if (type.equals("parent")) {
+                                                            Intent intent = new Intent(getApplicationContext(), ParentView.class);
+                                                            MainActivity.this.startActivity(intent);
+                                                        } else {
+                                                            Intent intent = new Intent(getApplicationContext(), ChildView.class);
+                                                            MainActivity.this.startActivity(intent);
+                                                        }
                                                     }
 
                                                     @Override
                                                     public void onCancelled(DatabaseError databaseError) {
                                                         Log.w(TAG, "getUser:onCancelled", databaseError.toException());
                                                     }
-                                                });*/
-                                        Intent intent = new Intent(getApplicationContext(), ParentView.class);
-                                        MainActivity.this.startActivity(intent);
+                                                });
+
                                     } else {
                                         System.out.println("Not logged in!");
                                     }

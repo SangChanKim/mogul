@@ -1,8 +1,10 @@
 package com.example.jxw679.mogul.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +14,25 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeMap;
 
+import com.example.jxw679.mogul.model.Parent;
 import com.example.jxw679.mogul.R;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ParentView extends AppCompatActivity {
 
     private ArrayList<String> data = new ArrayList<String>();
-
+    private DatabaseReference mDatabase;
+    private static final String TAG = "PARENTVIEW";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +40,36 @@ public class ParentView extends AppCompatActivity {
         ListView lv = (ListView) findViewById(R.id.child_list);
         generateListContent();
         lv.setAdapter(new MyListAdapter(this, R.layout.child_list_item, data));
+
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String uid = user.getUid();
+            System.out.println("UID: " + uid);
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+            mDatabase.child("users").child(uid).addListenerForSingleValueEvent(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Parent parent = dataSnapshot.getValue(Parent.class);
+                            parent.setUsername(parent.getEmail());
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            if (user != null) {
+                                parent.setUid(user.getUid());
+                            }
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Log.w(TAG, "getUser:onCancelled", databaseError.toException());
+                        }
+                    });
+
+        } else {
+            System.out.println("Not logged in!");
+        }
     }
 
     private void generateListContent() {
-
-
     }
 
     private class MyListAdapter extends ArrayAdapter {
