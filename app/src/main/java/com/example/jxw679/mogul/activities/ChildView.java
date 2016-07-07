@@ -141,12 +141,7 @@ public class ChildView extends AppCompatActivity {
                 NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
 
                 viewHolder.balance.setText(currencyFormatter.format(currencyAmount));
-                //viewHolder.button = (ImageButton) convertView.findViewById(R.id.button);
-                viewHolder.button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                    }
-                });
+
                 convertView.setTag(viewHolder);
             } else {
                 //mainViewHolder = (ViewHolder) convertView.getTag();
