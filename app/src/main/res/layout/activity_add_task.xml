@@ -9,6 +9,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.jxw679.mogul.activities.AddTask">
 
+
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -114,10 +116,10 @@
         android:layout_alignStart="@id/dollarsign"
         android:layout_marginTop="30dp" />
 
-    <ImageButton
-        android:id="@+id/add_child_to_task"
-        android:layout_width="155dp"
-        android:layout_height="49dp"
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/assign_to_label"
         android:layout_marginTop="15dp"
         android:adjustViewBounds="true"
@@ -125,8 +127,7 @@
         android:scaleType="fitXY"
         android:src="@drawable/click_to_add_button"
         android:background="@android:color/transparent"
-        android:layout_alignLeft="@id/assign_to_label"
-        />
+        android:layout_alignLeft="@id/assign_to_label"/>
 
     <ImageButton
         android:id="@+id/create_task_button"

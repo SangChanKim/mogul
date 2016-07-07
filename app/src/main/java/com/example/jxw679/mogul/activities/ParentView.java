@@ -56,6 +56,7 @@ public class ParentView extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             String uid = user.getUid();
