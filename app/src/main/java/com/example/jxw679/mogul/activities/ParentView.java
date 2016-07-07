@@ -43,11 +43,8 @@ public class ParentView extends AppCompatActivity {
     public static ArrayList<Child> data = new ArrayList<Child>();
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
+    protected void onResume() {
+        super.onResume();
         startUp();
     }
 
@@ -56,7 +53,6 @@ public class ParentView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_view);
         startUp();
-
     }
 
     public void startUp() {

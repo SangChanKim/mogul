@@ -58,8 +58,6 @@ public class AddTask extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendRequestForTask();
-                Intent intent = new Intent(getApplicationContext(), ParentView.class);
-                startActivity(intent);
             }
         });
 
