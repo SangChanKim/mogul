@@ -46,25 +46,14 @@
         android:layout_below="@+id/profile_pic" />
 
     <TextView
-        android:id="@+id/children_header"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Balance"
-        android:layout_below="@id/name"
-        android:src="@drawable/children_header"
+        android:id="@+id/balance"
+        android:layout_below="@+id/name"
+        android:
         />
-
-    <ListView
-        android:id="@+id/child_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/children_header"
-        android:layout_marginTop="10dp">
-
-    </ListView>
-
 
 
 </RelativeLayout>
