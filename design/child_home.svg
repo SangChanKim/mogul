@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="414px" height="736px" viewBox="0 0 414 736" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #54C7FC;">
+<svg width="414px" height="736px" viewBox="0 0 414 736" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
-    <title>Child - Home</title>
+    <title>child_home</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <rect id="path-1" x="172.524" y="13.728" width="68.952" height="38.376" rx="2.496"></rect>
@@ -19,7 +19,8 @@
         </mask>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Child---Home">
+        <g id="child_home">
+            <rect id="Rectangle-81" fill-opacity="0.515738225" fill="#54C7FC" x="0" y="0" width="414" height="736"></rect>
             <g id="Group">
                 <rect id="Rectangle-64" fill="#656B72" x="0" y="0" width="414" height="66"></rect>
                 <use id="Rectangle-1" stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="3.744" fill="#7ED321" xlink:href="#path-1"></use>
