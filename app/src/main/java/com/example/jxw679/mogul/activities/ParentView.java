@@ -17,6 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.jxw679.mogul.model.Child;
 import com.example.jxw679.mogul.model.Parent;
 import com.example.jxw679.mogul.R;
 
@@ -30,17 +31,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ParentView extends AppCompatActivity {
 
-    private ArrayList<String> data = new ArrayList<String>();
+    private ArrayList<Child> data = new ArrayList<Child>();
     private DatabaseReference mDatabase;
     private static final String TAG = "PARENTVIEW";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_view);
-        ListView lv = (ListView) findViewById(R.id.child_list);
-        generateListContent();
-        lv.setAdapter(new MyListAdapter(this, R.layout.child_list_item, data));
-
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -57,6 +54,8 @@ public class ParentView extends AppCompatActivity {
                             if (user != null) {
                                 parent.setUid(user.getUid());
                             }
+                            TextView parentName = (TextView) findViewById(R.id.parent_name);
+                            parentName.setText(parent.getFirstname() +  " " + parent.getLastname());
                         }
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
@@ -67,15 +66,22 @@ public class ParentView extends AppCompatActivity {
         } else {
             System.out.println("Not logged in!");
         }
+
+        ListView lv = (ListView) findViewById(R.id.child_list);
+        generateListContent();
+        lv.setAdapter(new MyListAdapter(this, R.layout.child_list_item, data));
+
+
     }
 
     private void generateListContent() {
+
     }
 
     private class MyListAdapter extends ArrayAdapter {
         private int layout;
 
-        private MyListAdapter(Context context, int resource, List<String> objects) {
+        private MyListAdapter(Context context, int resource, List<Child> objects) {
             super(context, resource, objects);
             layout = resource;
         }
