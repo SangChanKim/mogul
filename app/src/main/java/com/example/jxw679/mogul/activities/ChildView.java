@@ -22,13 +22,15 @@ import android.text.style.AbsoluteSizeSpan;
 import android.text.TextUtils;
 
 import com.example.jxw679.mogul.R;
+import com.example.jxw679.mogul.model.Task;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChildView extends AppCompatActivity {
 
-    private ArrayList<String> data = new ArrayList<String>();
+    private ArrayList<Task> data = new ArrayList<Task>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
