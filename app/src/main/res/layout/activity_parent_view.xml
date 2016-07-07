@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/light_blue"
-    tools:context="com.example.jxw679.mogul.ParentView">
+    tools:context=".activities.ParentView">
 
     <ImageView
         android:id="@+id/welcome"
