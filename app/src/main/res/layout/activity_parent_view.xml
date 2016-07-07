@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
@@ -43,6 +43,17 @@
         android:src="@drawable/default_profile_pic"
         />
 
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/add_task"
+            android:layout_marginLeft="300dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/add_button"
+            android:background="@color/light_blue"
+            android:textColor="@color/light_blue"
+            android:layout_above="@id/child_list" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,4 +82,4 @@
 
     </ListView>
     </RelativeLayout>
-</android.support.v4.widget.SwipeRefreshLayout>
+</RelativeLayout>
