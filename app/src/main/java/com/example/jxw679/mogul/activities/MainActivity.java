@@ -54,16 +54,6 @@ public class MainActivity extends AppCompatActivity {
         window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
-        swipeRefreshLayout.setRefreshing(false);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                finish();
-                startActivity(getIntent());
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
         mAuth = FirebaseAuth.getInstance();
         etUsername = (EditText) findViewById(R.id.username);
         etUsername.setText("kristapsberzinch@gmail.com");

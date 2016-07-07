@@ -16,15 +16,21 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class AddTask extends AppCompatActivity {
 
+    EditText taskName = null;
+    EditText description = null;
+    EditText price = null;
+    EditText deadline = null;
+    Intent prevIntent = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-
-        EditText taskName = (EditText) findViewById(R.id.task_name_edit);
-        EditText description = (EditText) findViewById(R.id.description_edit);
-        EditText price = (EditText) findViewById(R.id.price_edit);
-        EditText deadline = (EditText) findViewById(R.id.deadline_edit);
+        prevIntent = getIntent();
+        taskName = (EditText) findViewById(R.id.task_name_edit);
+        description = (EditText) findViewById(R.id.description_edit);
+        price = (EditText) findViewById(R.id.price_edit);
+        deadline = (EditText) findViewById(R.id.deadline_edit);
         ImageButton assign = (ImageButton) findViewById(R.id.add_child_to_task);
         ImageButton backButton = (ImageButton) findViewById(R.id.back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -35,12 +41,23 @@ public class AddTask extends AppCompatActivity {
             }
         });
         ImageButton createTask = (ImageButton) findViewById(R.id.create_task_button);
+        createTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendRequestForTask();
+                Intent intent = new Intent(getApplicationContext(), ParentView.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void sendRequestForTask() {
         TaskRequest req = new TaskRequest();
-
-
+        req.setDescription(description.getText().toString());
+        req.setDeadline(deadline.getText().toString());
+        req.setReward(Integer.parseInt(price.getText().toString()));
+        req.setTaskname(taskName.getText().toString());
+        req.setAssignto();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         ref.child("/requests").push().setValue(req);
     }
