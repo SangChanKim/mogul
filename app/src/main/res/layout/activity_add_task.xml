@@ -74,6 +74,7 @@
         android:layout_marginLeft="20dp"
         android:backgroundTint="@color/lime_green"
         />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,13 +85,27 @@
         android:layout_alignStart="@id/description_edit"
         android:id="@+id/dollarsign" />
 
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:id="@+id/deadline_edit"
+        android:hint="Deadline"
+
+        android:layout_below="@+id/price_edit"
+        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@+id/task_name_edit"
+        android:layout_alignStart="@+id/task_name_edit"
+        android:backgroundTint="@color/lime_green"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="ASSIGN TO"
         android:id="@+id/assign_to_label"
-        android:layout_below="@+id/price_edit"
+        android:layout_below="@+id/deadline_edit"
         android:layout_alignLeft="@id/dollarsign"
         android:layout_alignStart="@id/dollarsign"
         android:layout_marginTop="30dp" />

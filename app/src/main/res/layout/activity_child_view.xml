@@ -106,44 +106,16 @@
         android:layout_marginLeft="30dp"
         android:background="@android:color/white" />
 
+    <ListView
+        android:id="@+id/assigned_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/separator_2"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
 
-    <RelativeLayout
-        android:id="@+id/task_button_layout"
-        android:layout_width="260dp"
-        android:layout_height="86dp"
-        android:layout_below="@id/assigned_tasks"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp">
-
-        <ImageView
-            android:layout_width="260dp"
-            android:layout_height="86dp"
-            android:id="@+id/assigned_task"
-            android:src="@drawable/assigned_task_button"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/task_text"
-            android:text="Task"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/task_amount"
-            android:layout_below="@id/task_text"
-            android:text="$4.00"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:layout_marginTop="5dp"
-            android:layout_centerHorizontal="true"
-            />
-    </RelativeLayout>
-
+    </ListView>
 
 
 </RelativeLayout>
