@@ -40,7 +40,7 @@ public class ParentView extends AppCompatActivity {
     private static final String TAG = "PARENTVIEW";
     public static Parent parent;
 
-    public ArrayList<Child> data = new ArrayList<Child>();
+    public static ArrayList<Child> data = new ArrayList<Child>();
 
 
     @Override

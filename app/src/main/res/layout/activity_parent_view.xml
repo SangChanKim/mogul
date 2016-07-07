@@ -43,29 +43,34 @@
             android:src="@drawable/default_profile_pic"
             />
 
-
-
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="CHILDREN"
-            android:id="@+id/children_label"
-            android:layout_below="@+id/profile_pic"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="CHILDREN"
+        android:id="@+id/children_label"
+        android:layout_below="@+id/profile_pic"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        />
 
+    <View
+        android:id="@+id/separator_1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/children_label"
+        android:layout_marginLeft="30dp"
+        android:background="@android:color/white" />
 
+    <ListView
+        android:id="@+id/child_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/children_label"
+        android:layout_marginTop="10dp">
 
-        <ListView
-            android:id="@+id/child_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/children_label"
-            android:layout_marginTop="10dp">
+    </ListView>
 
-        </ListView>
         <ImageButton
             android:layout_width="60dp"
             android:layout_height="60dp"
