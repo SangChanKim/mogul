@@ -2,6 +2,7 @@ package com.example.jxw679.mogul.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -56,7 +57,16 @@ public class ChildView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_view);
-
+        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setRefreshing(false);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                finish();
+                startActivity(getIntent());
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             String uid = user.getUid();
@@ -72,7 +82,7 @@ public class ChildView extends AppCompatActivity {
                             child.setUsername(child.getEmail());
                             child.setUid(dataSnapshot.getKey());
 
-                            TextView childName = (TextView) findViewById(R.id.name);
+                            TextView childName = (TextView) findViewById(R.id.child_name);
                             childName.setText(child.getFirstname() +  " " + child.getLastname());
 
                             TextView balance = (TextView) findViewById(R.id.child_balance);
@@ -81,7 +91,7 @@ public class ChildView extends AppCompatActivity {
 
                             generateListContent();
 
-                            ListView lv = (ListView) findViewById(R.id.separator_2);
+                            ListView lv = (ListView) findViewById(R.id.assigned_list);
                             lv.setAdapter(new MyListAdapter(getApplicationContext(), R.layout.task_list_item, data));
 
 

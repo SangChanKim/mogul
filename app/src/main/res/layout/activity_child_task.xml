@@ -97,23 +97,5 @@ you don’t miss a spot."
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="ASSIGNED TO"
-        android:id="@+id/assign_to_label"
-        android:layout_below="@+id/status_spinner"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="30dp"
-        />
-
-    <View
-        android:id="@+id/separator_3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/assign_to_label"
-        android:layout_marginLeft="30dp"
-        android:background="@color/lime_green" />
 
 </RelativeLayout>
