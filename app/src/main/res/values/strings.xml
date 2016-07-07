@@ -14,4 +14,5 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="multiline"><div style="font-size:20px">Mow the lawn.</div>\n<div style="font-size:24px">$4.50</div></string>
 </resources>
