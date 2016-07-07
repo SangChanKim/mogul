@@ -13,47 +13,35 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/welcome"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/welcome_text2x"
-        />
+        <ImageView
+            android:id="@+id/welcome"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/welcome_text2x"
+            />
 
-    <TextView
-        android:id="@+id/parent_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="20dp"
-        android:textColor="#FFFFFF"
-        android:layout_below="@id/welcome"
-        android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true"/>
+        <TextView
+            android:id="@+id/parent_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:layout_below="@id/welcome"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"/>
 
-    <ImageView
-        android:id="@+id/profile_pic"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:layout_below="@id/parent_name"
-        android:src="@drawable/default_profile_pic"
-        />
-
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/add_task"
-            android:layout_marginLeft="300dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/add_button"
-            android:background="@color/light_blue"
-            android:textColor="@color/light_blue"
-            android:layout_above="@id/child_list" />
+        <ImageView
+            android:id="@+id/profile_pic"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/parent_name"
+            android:src="@drawable/default_profile_pic"
+            />
 
         <TextView
         android:layout_width="wrap_content"
@@ -82,5 +70,17 @@
         android:layout_marginTop="10dp">
 
     </ListView>
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/add_task"
+            android:layout_marginLeft="300dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/add_button"
+            android:background="@color/light_blue"
+            android:textColor="@color/light_blue"
+            android:layout_above="@id/child_list" />
+
     </RelativeLayout>
 </RelativeLayout>
