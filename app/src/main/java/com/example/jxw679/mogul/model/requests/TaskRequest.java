@@ -17,7 +17,7 @@ public class TaskRequest {
     }
 
 
-    public TaskRequest(String deadline, String description, String owner, String taskname, boolean completed, int reward, String assignto) {
+    public TaskRequest(String deadline, String description, String owner, String taskname, boolean completed, int reward, String assignto, String addTask) {
         this.deadline = deadline;
         this.description = description;
         this.owner = owner;
