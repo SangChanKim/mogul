@@ -43,14 +43,14 @@
         android:src="@drawable/default_profile_pic"
         />
 
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="50dp"
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:id="@+id/add_task"
             android:layout_marginLeft="300dp"
-            android:layout_marginBottom="10dp"
-            android:text="Add Task"
-            android:background="#FFFFFF"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/add_button"
+            android:background="@color/light_blue"
             android:textColor="@color/light_blue"
             android:layout_above="@id/child_list" />
 

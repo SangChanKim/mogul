@@ -47,7 +47,7 @@ public class ParentView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_view);
-        Button addTask = (Button) findViewById(R.id.add_task);
+        ImageButton addTask = (ImageButton) findViewById(R.id.add_task);
         addTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
