@@ -132,7 +132,7 @@ public class ParentView extends AppCompatActivity {
                 convertView = inflater.inflate(layout, parent, false);
                 ViewHolder viewHolder = new ViewHolder();
 
-                Child currentChild = (Child) this.getItem(position);
+                final Child currentChild = (Child) this.getItem(position);
                 viewHolder.profile_pic = (ImageView) convertView.findViewById(R.id.profile_pic);
                 viewHolder.name = (TextView) convertView.findViewById(R.id.child_name);
                 viewHolder.name.setText(currentChild.getFirstname());
@@ -147,7 +147,8 @@ public class ParentView extends AppCompatActivity {
                 viewHolder.button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(getApplicationContext(), ChildView.class);
+                        Intent intent = new Intent(getApplicationContext(), ChildViewFromParent.class);
+                        intent.putExtra("child_uid", currentChild.getAccountid());
                         ParentView.this.startActivity(intent);
                     }
                 });

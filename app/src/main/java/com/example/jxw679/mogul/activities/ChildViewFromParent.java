@@ -28,6 +28,7 @@ import com.example.jxw679.mogul.R;
 import com.example.jxw679.mogul.model.Child;
 import com.example.jxw679.mogul.model.Parent;
 import com.example.jxw679.mogul.model.Task;
+import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -44,11 +45,11 @@ import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
 
-public class ChildView extends AppCompatActivity {
+public class ChildViewFromParent extends AppCompatActivity {
 
 
     private DatabaseReference mDatabase;
-    private static final String TAG = "ChildView";
+    private static final String TAG = "ChildViewFromParent";
     public static Child child;
 
     public ArrayList<Task> data = new ArrayList<Task>();
@@ -57,45 +58,43 @@ public class ChildView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_child_view);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            String uid = user.getUid();
-            System.out.println("UID: " + uid);
-            mDatabase = FirebaseDatabase.getInstance().getReference();
-            mDatabase.child("users").child(uid).addListenerForSingleValueEvent(
-                    new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            ChildView.child = dataSnapshot.getValue(Child.class);
+        setContentView(R.layout.activity_child_view_from_parent);
 
-                            child.setUsername(child.getEmail());
-                            child.setUid(dataSnapshot.getKey());
+        Intent i = getIntent();
+        String uid = i.getStringExtra("child_uid");
 
-                            TextView childName = (TextView) findViewById(R.id.child_name);
-                            System.out.println(child.getFirstname());
-                            childName.setText(child.getFirstname() +  " " + child.getLastname());
+        //String uid = user.getUid();
+        System.out.println("UID: " + uid);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("users").child(uid).addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        child = dataSnapshot.getValue(Child.class);
+                        System.out.println("child is: " + child);
 
-                            TextView balance = (TextView) findViewById(R.id.child_balance);
-                            System.out.println(child.getBalance());
-                            balance.setText("$" + String.valueOf(child.getBalance()));
+                        child.setUsername(child.getEmail());
+                        child.setUid(dataSnapshot.getKey());
 
-                            generateListContent();
+                        TextView childName = (TextView) findViewById(R.id.child_name);
+                        System.out.println(child.getFirstname());
+                        childName.setText(child.getFirstname() +  " " + child.getLastname());
+                        TextView balance = (TextView) findViewById(R.id.child_balance);
+                        System.out.println(child.getBalance());
+                        balance.setText("$" + String.valueOf(child.getBalance()));
+                        generateListContent();
 
-                            ListView lv = (ListView) findViewById(R.id.assigned_list);
-                            lv.setAdapter(new MyListAdapter(getApplicationContext(), R.layout.task_list_item, data));
+                        ListView lv = (ListView) findViewById(R.id.assigned_list);
+                        lv.setAdapter(new MyListAdapter(getApplicationContext(), R.layout.task_list_item, data));
 
 
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.w(TAG, "getUser:onCancelled", databaseError.toException());
-                        }
-                    });
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.w(TAG, "getUser:onCancelled", databaseError.toException());
+                    }
+                });
 
-        } else {
-            System.out.println("Not logged in!");
-        }
     }
 
     private void generateListContent() {
@@ -140,7 +139,7 @@ public class ChildView extends AppCompatActivity {
                         intent.putExtra("description", currentTask.description);
                         intent.putExtra("deadline", currentTask.deadline);
                         intent.putExtra("reward", String.valueOf(currentTask.reward));
-                        ChildView.this.startActivity(intent);
+                        ChildViewFromParent.this.startActivity(intent);
                     }
                 });
 
