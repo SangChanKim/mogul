@@ -1,7 +1,9 @@
 package com.example.jxw679.mogul.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -26,6 +28,13 @@ public class ParentTask extends AppCompatActivity {
         setContentView(R.layout.activity_parent_task);
 
         ImageButton back_button = (ImageButton) findViewById(R.id.back_button);
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ChildView.class);
+                startActivity(intent);
+            }
+        });
         TextView task_name = (TextView) findViewById(R.id.task_name_edit);
         TextView description_text = (TextView) findViewById(R.id.description_text);
         Spinner status_spinner = (Spinner) findViewById(R.id.status_spinner);
