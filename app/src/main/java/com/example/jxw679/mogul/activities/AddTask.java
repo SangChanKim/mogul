@@ -12,4 +12,9 @@ public class AddTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
     }
+
+    private void sendRequestForTask() {
+
+    }
 }
+
