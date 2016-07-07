@@ -8,10 +8,18 @@ import android.widget.TextView;
 import android.widget.Spinner;
 
 import com.example.jxw679.mogul.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ParentTask extends AppCompatActivity {
 
-    String[] statuses = {"Requested", "In Progress", "In Review", "Completed"};
+    private String[] statuses = {"Requested", "In Progress", "In Review", "Completed"};
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +36,25 @@ public class ParentTask extends AppCompatActivity {
 
         status_spinner.setAdapter(arrayAdapter);
 
-        for (String status : statuses) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String uid = user.getUid();
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+            mDatabase.child("users").child(uid).addListenerForSingleValueEvent(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
 
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+        } else {
+            System.out.println("Not logged in!");
         }
+
     }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,35 +24,67 @@ import android.text.TextUtils;
 
 import com.example.jxw679.mogul.R;
 import com.example.jxw679.mogul.model.Child;
+import com.example.jxw679.mogul.model.Parent;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.example.jxw679.mogul.model.Task;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ChildView extends AppCompatActivity {
 
     private ArrayList<Task> data = new ArrayList<Task>();
-
+    private DatabaseReference mDatabase;
+    private static final String TAG = "CHILDVIEW";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_child_view);
-        ListView lv = (ListView) findViewById(R.id.child_list);
-        generateListContent();
-        //lv.setAdapter(new MyListAdapter(this, R.layout.child_list_item, data));
+        setContentView(R.layout.activity_parent_view);
 
-        RelativeLayout task_button = (RelativeLayout) findViewById(R.id.task_button_layout);
-        task_button.setOnClickListener(new View.OnClickListener() {
-                                           @Override
-                                           public void onClick(View view) {
-                                               // go to task view page
-                                           }
-                                       });
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String uid = user.getUid();
+            System.out.println("UID: " + uid);
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+            mDatabase.child("users").child(uid).addListenerForSingleValueEvent(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Child child = dataSnapshot.getValue(Child.class);
+                            child.setUsername(child.getEmail());
 
-        TextView task_text = (TextView) findViewById(R.id.task_text);
-        TextView task_amount = (TextView) findViewById(R.id.task_amount);
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            if (user != null) {
+                                child.setUid(user.getUid());
+                            }
+                            TextView childName = (TextView) findViewById(R.id.child_name);
+                            childName.setText(child.getFirstname() +  " " + child.getLastname());
+
+                            TextView childBalance = (TextView) findViewById(R.id.child_balance);
+                            childBalance.setText("$" + String.valueOf(child.getBalance()));
+
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Log.w(TAG, "getUser:onCancelled", databaseError.toException());
+                        }
+                    });
+
+        } else {
+            System.out.println("Not logged in!");
+        }
+
+//        ListView lv = (ListView) findViewById(R.id.child_list);
+//        generateListContent();
+//        lv.setAdapter(new MyListAdapter(this, R.layout.child_list_item, data));
 
 
-        // We need to find all the tasks for the given child and parse them here
     }
 
     private void generateListContent() {
