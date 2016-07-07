@@ -9,6 +9,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.jxw679.mogul.R;
+import com.example.jxw679.mogul.model.Task;
+import com.example.jxw679.mogul.model.requests.TaskRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class AddTask extends AppCompatActivity {
 
@@ -34,7 +38,11 @@ public class AddTask extends AppCompatActivity {
     }
 
     private void sendRequestForTask() {
+        TaskRequest req = new TaskRequest();
+ 
 
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        ref.child("/requests").push().setValue(req);
     }
 }
 
