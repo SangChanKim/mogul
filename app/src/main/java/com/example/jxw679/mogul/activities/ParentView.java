@@ -1,4 +1,4 @@
-package com.example.jxw679.mogul;
+package com.example.jxw679.mogul.activities;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +18,8 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
+
+import com.example.jxw679.mogul.R;
 
 public class ParentView extends AppCompatActivity {
 
