@@ -8,9 +8,29 @@ public class Task {
     public String description;
     public String owner;
     public String taskname;
+    public boolean completed;
+    public int reward;
 
     public Task() {
 
+    }
+
+    public Task(String deadline, String description, String owner, String taskname, boolean completed, int reward) {
+        this.deadline = deadline;
+        this.description = description;
+        this.owner = owner;
+        this.taskname = taskname;
+        this.completed = completed;
+        this.reward = reward;
+    }
+
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public int getReward() {
+        return reward;
     }
 
     public String getDeadline() {
@@ -21,6 +41,30 @@ public class Task {
         return owner;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public void setTaskname(String taskname) {
+        this.taskname = taskname;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
+    public void setReward(int reward) {
+        this.reward = reward;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -29,14 +73,7 @@ public class Task {
         return taskname;
     }
 
-    public Task(String deadline, String description, String owner, String taskname) {
-        this.deadline = deadline;
-        this.description = description;
-        this.owner = owner;
-        this.taskname = taskname;
-    }
-
     public String toString() {
-        return taskname + ": " + description + ", " + owner + ", " + deadline;
+        return taskname + ": " + description + ", " + owner + ", " + deadline + ", " + completed + ", " + reward;
     }
 }

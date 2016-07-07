@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
         });
         mAuth = FirebaseAuth.getInstance();
         etUsername = (EditText) findViewById(R.id.username);
-        etUsername.setText("sck970112@gmail.com");
+        etUsername.setText("kristapsberzinch@gmail.com");
         etPassword = (EditText) findViewById(R.id.password);
-        etPassword.setText("sangchankim");
+        etPassword.setText("kristapsberzinch");
         btSignIn = (ImageButton) findViewById(R.id.signin);
         btSignUp = (ImageButton) findViewById(R.id.signup);
         btSignIn.setOnClickListener(new View.OnClickListener() {
