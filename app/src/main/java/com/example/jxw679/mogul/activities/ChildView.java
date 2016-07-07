@@ -22,7 +22,8 @@ import android.text.style.AbsoluteSizeSpan;
 import android.text.TextUtils;
 
 import com.example.jxw679.mogul.R;
-import com.example.jxw679.mogul.model.Child;
+import com.example.jxw679.mogul.model.Task;
+
 
 import java.util.ArrayList;
 import java.util.List;
