@@ -76,7 +76,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/balance_text"
-        android:layout_marginLeft="30dp"
         android:background="@android:color/white" />
 
     <TextView
@@ -108,7 +107,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/assigned_tasks"
-        android:layout_marginLeft="30dp"
         android:background="@android:color/white" />
 
     <ListView

@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_marginTop="10dp"
+        android:textColor="@android:color/white"
         android:layout_centerHorizontal="true"
         android:text="Mow the lawn"
         />
@@ -20,20 +21,12 @@
         android:textSize="24dp"
         android:text="$4.00"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="@android:color/white"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/task_text"
         />
 
-    <TextView
-        android:id="@+id/deadline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="Complete By: "
-        android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/task_amount"
-        />
 
 
 </RelativeLayout>
