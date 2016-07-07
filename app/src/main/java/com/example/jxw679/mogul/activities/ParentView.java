@@ -42,11 +42,24 @@ public class ParentView extends AppCompatActivity {
 
     public static ArrayList<Child> data = new ArrayList<Child>();
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+        startUp();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_view);
+        startUp();
+
+    }
+
+    public void startUp() {
         ImageButton addTask = (ImageButton) findViewById(R.id.add_task);
         addTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +99,6 @@ public class ParentView extends AppCompatActivity {
         } else {
             System.out.println("Not logged in!");
         }
-
-
 
     }
 
