@@ -14,8 +14,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 
 import com.example.jxw679.mogul.model.Child;
 import com.example.jxw679.mogul.model.Parent;
@@ -31,9 +34,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ParentView extends AppCompatActivity {
 
-    private ArrayList<Child> data = new ArrayList<Child>();
     private DatabaseReference mDatabase;
     private static final String TAG = "PARENTVIEW";
+    public static Parent parent;
+
+    public ArrayList<Child> data = new ArrayList<Child>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,14 +55,14 @@ public class ParentView extends AppCompatActivity {
                     new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            Parent parent = dataSnapshot.getValue(Parent.class);
-                            parent.setUsername(parent.getEmail());
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            if (user != null) {
-                                parent.setUid(user.getUid());
-                            }
+                            ParentView.parent = dataSnapshot.getValue(Parent.class);
+                            parent.setUsername(dataSnapshot.getKey());
                             TextView parentName = (TextView) findViewById(R.id.parent_name);
                             parentName.setText(parent.getFirstname() +  " " + parent.getLastname());
+                            System.out.println(parent.toString());
+
+                            generateListContent();
+
                         }
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
@@ -67,14 +74,33 @@ public class ParentView extends AppCompatActivity {
             System.out.println("Not logged in!");
         }
 
-        ListView lv = (ListView) findViewById(R.id.child_list);
-        generateListContent();
-        lv.setAdapter(new MyListAdapter(this, R.layout.child_list_item, data));
 
 
     }
 
     private void generateListContent() {
+        for (String childuid: parent.getChildren()) {
+            System.out.println("childuid: " + childuid);
+            mDatabase.child("users").child(childuid).addListenerForSingleValueEvent(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Child child = dataSnapshot.getValue(Child.class);
+                            child.setUsername(child.getEmail());
+                            child.setUid(dataSnapshot.getKey());
+                            System.out.println("FOUND CHILD DATA FOR " + child.getUid());
+                            data.add(child);
+                            if (data.size() == parent.getChildren().size()) {
+                                ListView lv = (ListView) findViewById(R.id.child_list);
+                                lv.setAdapter(new MyListAdapter(getApplicationContext(), R.layout.child_list_item, data));
+                            }
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Log.w(TAG, "getUser:onCancelled", databaseError.toException());
+                        }
+                    });
+        }
 
     }
 
@@ -83,6 +109,7 @@ public class ParentView extends AppCompatActivity {
 
         private MyListAdapter(Context context, int resource, List<Child> objects) {
             super(context, resource, objects);
+            System.out.println("Size of objects: " + objects.size());
             layout = resource;
         }
 
@@ -93,20 +120,30 @@ public class ParentView extends AppCompatActivity {
                 LayoutInflater inflater = LayoutInflater.from(getContext());
                 convertView = inflater.inflate(layout, parent, false);
                 ViewHolder viewHolder = new ViewHolder();
+
+                Child currentChild = (Child) this.getItem(position);
                 viewHolder.profile_pic = (ImageView) convertView.findViewById(R.id.profile_pic);
                 viewHolder.name = (TextView) convertView.findViewById(R.id.child_name);
+                viewHolder.name.setText(currentChild.getFirstname());
                 viewHolder.balance = (TextView) convertView.findViewById(R.id.child_balance);
+
+                Double currencyAmount = new Double(currentChild.getBalance());
+                Currency currentCurrency = Currency.getInstance(Locale.US);
+                NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
+
+                viewHolder.balance.setText(currencyFormatter.format(currencyAmount));
                 viewHolder.button = (ImageButton) convertView.findViewById(R.id.button);
                 viewHolder.button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //Send child ID or something
+                        Intent intent = new Intent(getApplicationContext(), ChildView.class);
+                        ParentView.this.startActivity(intent);
                     }
                 });
                 convertView.setTag(viewHolder);
             } else {
-                mainViewHolder = (ViewHolder) convertView.getTag();
-                mainViewHolder.name.setText((Integer) getItem(position));
+                //mainViewHolder = (ViewHolder) convertView.getTag();
+                //mainViewHolder.name.setText((Integer) getItem(position));
             }
 
             return convertView;
