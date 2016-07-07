@@ -1,12 +1,13 @@
 package com.example.jxw679.mogul.model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by jxw679 on 7/6/16.
  */
-public class Child {
+public class Child implements Serializable{
 
     private String username;
     private String email;

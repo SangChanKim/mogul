@@ -44,17 +44,6 @@
         />
 
 
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/add_task"
-            android:layout_marginLeft="300dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/add_button"
-            android:background="@color/light_blue"
-            android:textColor="@color/light_blue"
-            android:layout_above="@id/child_list" />
-
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,6 +54,17 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         />
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/add_task"
+            android:layout_marginLeft="300dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/add_button"
+            android:background="@color/light_blue"
+            android:textColor="@color/light_blue"
+            android:layout_above="@id/children_label" />
 
     <View
         android:id="@+id/separator_1"
