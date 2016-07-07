@@ -35,8 +35,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
 import java.text.NumberFormat;
+
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
@@ -84,6 +84,7 @@ public class ChildView extends AppCompatActivity {
                             ListView lv = (ListView) findViewById(R.id.separator_2);
                             lv.setAdapter(new MyListAdapter(getApplicationContext(), R.layout.task_list_item, data));
 
+
                         }
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
@@ -94,9 +95,6 @@ public class ChildView extends AppCompatActivity {
         } else {
             System.out.println("Not logged in!");
         }
-
-
-
     }
 
     private void generateListContent() {
