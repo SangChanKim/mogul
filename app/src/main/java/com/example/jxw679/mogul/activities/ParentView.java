@@ -1,7 +1,9 @@
-package com.example.jxw679.mogul;
+package com.example.jxw679.mogul.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.jxw679.mogul.R;
 
 public class ParentView extends AppCompatActivity {
 
