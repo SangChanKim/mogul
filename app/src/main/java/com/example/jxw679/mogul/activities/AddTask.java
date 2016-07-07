@@ -9,10 +9,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.jxw679.mogul.R;
+import com.example.jxw679.mogul.model.Child;
 import com.example.jxw679.mogul.model.Task;
 import com.example.jxw679.mogul.model.requests.TaskRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class AddTask extends AppCompatActivity {
 
@@ -21,12 +24,14 @@ public class AddTask extends AppCompatActivity {
     EditText price = null;
     EditText deadline = null;
     Intent prevIntent = null;
+    ArrayList<Child> child_data = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         prevIntent = getIntent();
+        child_data = (ArrayList<Child>) prevIntent.getExtras().get("child_list");
         taskName = (EditText) findViewById(R.id.task_name_edit);
         description = (EditText) findViewById(R.id.description_edit);
         price = (EditText) findViewById(R.id.price_edit);
