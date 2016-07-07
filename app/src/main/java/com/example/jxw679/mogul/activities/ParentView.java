@@ -56,7 +56,7 @@ public class ParentView extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             ParentView.parent = dataSnapshot.getValue(Parent.class);
-                            parent.setUsername(dataSnapshot.getKey());
+                            parent.setUsername(parent.getEmail());
                             TextView parentName = (TextView) findViewById(R.id.parent_name);
                             parentName.setText(parent.getFirstname() +  " " + parent.getLastname());
                             System.out.println(parent.toString());
