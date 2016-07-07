@@ -49,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         etUsername = (EditText) findViewById(R.id.username);
+        etUsername.setText("sck970112@gmail.com");
         etPassword = (EditText) findViewById(R.id.password);
+        etPassword.setText("sangchankim");
         btSignIn = (ImageButton) findViewById(R.id.signin);
         btSignUp = (ImageButton) findViewById(R.id.signup);
         btSignIn.setOnClickListener(new View.OnClickListener() {
@@ -71,10 +73,12 @@ public class MainActivity extends AppCompatActivity {
                                 } else {
 
 
+
                                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                     if (user != null) {
                                         String uid = user.getUid();
-                                        mDatabase = FirebaseDatabase.getInstance().getReference();
+                                        System.out.println("UID: " + uid);
+                                        /*mDatabase = FirebaseDatabase.getInstance().getReference();
                                         mDatabase.child("users").child(uid).addListenerForSingleValueEvent(
                                                 new ValueEventListener() {
                                                     @Override
@@ -90,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
                                                     public void onCancelled(DatabaseError databaseError) {
                                                         Log.w(TAG, "getUser:onCancelled", databaseError.toException());
                                                     }
-                                                });
-                                        Intent intent = new Intent(getApplicationContext(), ChildView.class);
+                                                });*/
+                                        Intent intent = new Intent(getApplicationContext(), ParentView.class);
                                         MainActivity.this.startActivity(intent);
                                     } else {
                                         System.out.println("Not logged in!");
