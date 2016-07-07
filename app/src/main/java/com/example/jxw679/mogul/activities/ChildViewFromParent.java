@@ -62,6 +62,20 @@ public class ChildViewFromParent extends AppCompatActivity {
 
         Intent i = getIntent();
         String uid = i.getStringExtra("child_uid");
+        ArrayList<Child> child_list = (ArrayList<Child>) i.getExtras().get("child_list");
+
+        System.out.println("child uid: " + uid);
+        System.out.println("child list: " + child_list);
+
+        for (Child chi : child_list) {
+            if (chi.getAccountid().equals(uid)) {
+                child = chi;
+                System.out.println("found a match");
+            }
+            System.out.println("chi" + chi.getAccountid());
+            System.out.println("uid:" + chi.getAccountid());
+            System.out.println();
+        }
 
         //String uid = user.getUid();
         System.out.println("UID: " + uid);
@@ -70,7 +84,7 @@ public class ChildViewFromParent extends AppCompatActivity {
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        child = dataSnapshot.getValue(Child.class);
+                        //child = dataSnapshot.getValue(Child.class);
                         System.out.println("child is: " + child);
 
                         child.setUsername(child.getEmail());

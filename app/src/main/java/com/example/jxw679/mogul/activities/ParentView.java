@@ -151,6 +151,7 @@ public class ParentView extends AppCompatActivity {
                     public void onClick(View view) {
                         Intent intent = new Intent(getApplicationContext(), ChildViewFromParent.class);
                         intent.putExtra("child_uid", currentChild.getAccountid());
+                        intent.putExtra("child_list", data);
                         ParentView.this.startActivity(intent);
                     }
                 });
