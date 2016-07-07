@@ -36,6 +36,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.text.NumberFormat;
 
 import java.util.ArrayList;
@@ -77,7 +78,7 @@ public class ChildView extends AppCompatActivity {
 
                             TextView balance = (TextView) findViewById(R.id.child_balance);
                             System.out.println(child.getBalance());
-                            balance.setText(String.valueOf(child.getBalance()));
+                            balance.setText("$" + String.valueOf(child.getBalance()));
 
                             generateListContent();
 
@@ -121,16 +122,27 @@ public class ChildView extends AppCompatActivity {
                 convertView = inflater.inflate(layout, parent, false);
                 ViewHolder viewHolder = new ViewHolder();
 
-                Task currentTask = (Task) this.getItem(position);
+                final Task currentTask = (Task) this.getItem(position);
                 viewHolder.name = (TextView) convertView.findViewById(R.id.task_text);
                 viewHolder.name.setText(currentTask.taskname);
                 viewHolder.balance = (TextView) convertView.findViewById(R.id.task_amount);
 
-                Double currencyAmount = new Double(currentTask.getReward());
+                final Double currencyAmount = new Double(currentTask.getReward());
                 Currency currentCurrency = Currency.getInstance(Locale.US);
                 NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
 
                 viewHolder.balance.setText(currencyFormatter.format(currencyAmount));
+                convertView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(), ChildTask.class);
+                        intent.putExtra("taskname", currentTask.taskname);
+                        intent.putExtra("description", currentTask.description);
+                        intent.putExtra("deadline", currentTask.deadline);
+                        intent.putExtra("reward", String.valueOf(currentTask.reward));
+                        ChildView.this.startActivity(intent);
+                    }
+                });
 
                 convertView.setTag(viewHolder);
             } else {

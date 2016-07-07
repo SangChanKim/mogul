@@ -54,7 +54,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/balance_text"
-        android:layout_marginLeft="30dp"
         android:background="@color/lime_green" />
 
     <TextView
@@ -86,7 +85,6 @@ you don’t miss a spot."
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/status_label"
-        android:layout_marginLeft="30dp"
         android:background="@color/lime_green" />
 
     <Spinner
@@ -113,7 +111,6 @@ you don’t miss a spot."
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/assign_to_label"
-        android:layout_marginLeft="30dp"
         android:background="@color/lime_green" />
 
     <ImageButton

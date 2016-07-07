@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:text="DESCRIPTION"
-        android:id="@+id/balance_text"
+        android:id="@+id/description_label"
         android:layout_below="@+id/task_name_edit"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
@@ -53,8 +53,7 @@
         android:id="@+id/separator_1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/balance_text"
-        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/description_label"
         android:background="@color/lime_green" />
 
     <TextView
@@ -74,7 +73,7 @@ you don’t miss a spot."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="STATUS"
+        android:text="REWARD"
         android:id="@+id/status_label"
         android:layout_below="@+id/description_text"
         android:layout_marginLeft="40dp"
@@ -86,16 +85,46 @@ you don’t miss a spot."
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/status_label"
-        android:layout_marginLeft="30dp"
         android:background="@color/lime_green" />
 
-    <ListView
-        android:layout_width="263dp"
-        android:layout_height="70dp"
-        android:id="@+id/status_spinner"
-        android:layout_below="@+id/separator_2"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50dp"
+        android:text="$4.50"
+        android:id="@+id/reward"
+        android:layout_below="@id/separator_2"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="DEADLINE"
+        android:id="@+id/deadline_label"
+        android:layout_below="@+id/reward"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="30dp"
+        />
+
+    <View
+        android:id="@+id/separator_3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/deadline_label"
+        android:background="@color/lime_green" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="4/17/2016"
+        android:id="@+id/deadline"
+        android:layout_below="@id/separator_3"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        />
 
 </RelativeLayout>
