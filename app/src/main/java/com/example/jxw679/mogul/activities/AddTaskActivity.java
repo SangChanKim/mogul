@@ -1,7 +1,6 @@
 package com.example.jxw679.mogul.activities;
 
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,14 +11,14 @@ import android.widget.Spinner;
 
 import com.example.jxw679.mogul.R;
 import com.example.jxw679.mogul.model.Child;
-import com.example.jxw679.mogul.model.Task;
+import com.example.jxw679.mogul.model.Parent;
 import com.example.jxw679.mogul.model.requests.TaskRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class AddTask extends AppCompatActivity {
+public class AddTaskActivity extends AppCompatActivity {
 
 
     private EditText taskName;
@@ -28,19 +27,22 @@ public class AddTask extends AppCompatActivity {
     private EditText deadline;
     private ImageButton backButton;
     private ImageButton createTask;
-    private Intent prevIntent;
-    private ArrayList<Child> child_list;
     private Spinner spinner;
-    private String parent_id;
+
+    private Parent parentObject;
+    private ArrayList<Child> childList;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-        prevIntent = getIntent();
-        parent_id = (String) prevIntent.getExtras().get("parent");
-        child_list = (ArrayList<Child>) prevIntent.getExtras().get("child_list");
+
+        // Get objects from previous activity
+        parentObject = (Parent) getIntent().getSerializableExtra(ParentViewActivity.PARENT_OBJECT_EXTRA_TAG);
+        childList = (ArrayList<Child>) getIntent().getExtras().get(ParentViewActivity.CHILD_LIST_OBJECT_EXTRA_TAG);
+
+        // UI setup
         taskName = (EditText) findViewById(R.id.task_name_edit);
         description = (EditText) findViewById(R.id.description_edit);
         price = (EditText) findViewById(R.id.price_edit);
@@ -49,17 +51,18 @@ public class AddTask extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ParentView.class);
+                Intent intent = new Intent(getApplicationContext(), ParentViewActivity.class);
                 startActivity(intent);
             }
         });
+
         createTask = (ImageButton) findViewById(R.id.create_task_button);
         createTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendRequestForTask();
-                Intent intent = new Intent(getApplicationContext(), ParentView.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getApplicationContext(), ParentViewActivity.class);
+                finishActivity(123);
             }
         });
 
@@ -67,9 +70,9 @@ public class AddTask extends AppCompatActivity {
 
         spinner = (Spinner) findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
-        String[] names = new String[child_list.size()];
-        for (int i = 0; i < child_list.size(); i++) {
-            names[i] = child_list.get(i).getFirstname();
+        String[] names = new String[childList.size()];
+        for (int i = 0; i < childList.size(); i++) {
+            names[i] = childList.get(i).getFirstname();
         }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, names);
         // Specify the layout to use when the list of choices appears
@@ -85,11 +88,12 @@ public class AddTask extends AppCompatActivity {
         req.setDeadline(deadline.getText().toString());
         req.setReward(Integer.parseInt(price.getText().toString()));
         req.setDescription(description.getText().toString());
-        req.setOwner(ParentView.parent.getUid());
+        req.setOwner(parentObject.getUid());
+        req.setWaitingApproval(false);
         req.setType("addTask");
 
         int pos = spinner.getSelectedItemPosition();
-        req.setAssignto(ParentView.parent.getChildren().get(pos));
+        req.setAssignto(parentObject.getChildren().get(pos));
         System.out.println("ASSIGNTO: " + req.getAssignto());
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         ref.child("/requests").push().setValue(req);

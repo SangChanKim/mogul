@@ -1,6 +1,5 @@
 package com.example.jxw679.mogul.activities;
 
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -31,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.example.jxw679.mogul.R;
 
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
 
     private FirebaseAuth mAuth;
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 if (!task.isSuccessful()) {
                                     Log.w(TAG, "signInWithEmail", task.getException());
-                                    Toast.makeText(MainActivity.this, "Authentication failed.",
+                                    Toast.makeText(LoginActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                 } else {
 
@@ -95,11 +94,11 @@ public class MainActivity extends AppCompatActivity {
                                                         String type = (String) map.get("type");
                                                         System.out.println(type);
                                                         if (type.equals("parent")) {
-                                                            Intent intent = new Intent(getApplicationContext(), ParentView.class);
-                                                            MainActivity.this.startActivity(intent);
+                                                            Intent intent = new Intent(getApplicationContext(), ParentViewActivity.class);
+                                                            LoginActivity.this.startActivity(intent);
                                                         } else {
-                                                            Intent intent = new Intent(getApplicationContext(), ChildView.class);
-                                                            MainActivity.this.startActivity(intent);
+                                                            Intent intent = new Intent(getApplicationContext(), ChildViewActivity.class);
+                                                            LoginActivity.this.startActivity(intent);
                                                         }
                                                     }
 

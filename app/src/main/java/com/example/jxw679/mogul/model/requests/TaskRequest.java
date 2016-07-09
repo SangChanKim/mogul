@@ -11,13 +11,14 @@ public class TaskRequest {
     public int reward;
     public String assignto;
     public String type;
+    public boolean waitingApproval;
 
     public TaskRequest() {
 
     }
 
 
-    public TaskRequest(String deadline, String description, String owner, String taskname, boolean completed, int reward, String assignto, String addTask) {
+    public TaskRequest(String deadline, String description, String owner, String taskname, boolean completed, int reward, String assignto, String addTask, boolean waitingApproval) {
         this.deadline = deadline;
         this.description = description;
         this.owner = owner;
@@ -25,7 +26,16 @@ public class TaskRequest {
         this.reward = reward;
         this.assignto = assignto;
         this.type = "addTask";
+        this.waitingApproval = waitingApproval;
 
+    }
+
+    public void setWaitingApproval(boolean waitingApproval) {
+        this.waitingApproval = waitingApproval;
+    }
+
+    public boolean isWaitingApproval() {
+        return waitingApproval;
     }
 
     public void setType(String type) {

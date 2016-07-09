@@ -7,4 +7,8 @@
     <color name="light_blue">#95daf0</color>
     <color name="light_dark_gray">#656B72</color>
     <color name="dark_dark_gray">#4A4A4A</color>
+
+    <color name="refresh_orange">#FF9900</color>
+    <color name="refresh_green">#009900</color>
+    <color name="refresh_blue">#000099</color>
 </resources>

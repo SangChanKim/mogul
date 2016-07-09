@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ParentTask extends AppCompatActivity {
+public class ParentTaskActivity extends AppCompatActivity {
 
     private String[] statuses = {"Requested", "In Progress", "In Review", "Completed"};
     private DatabaseReference mDatabase;
@@ -31,7 +31,7 @@ public class ParentTask extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ChildView.class);
+                Intent intent = new Intent(getApplicationContext(), ChildViewActivity.class);
                 startActivity(intent);
             }
         });

@@ -13,20 +13,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ParentView">
+        <activity android:name=".activities.ParentViewActivity">
         </activity>
-        <activity android:name=".activities.ChildView">
+        <activity android:name=".activities.ChildViewActivity">
         </activity>
-        <activity android:name=".activities.AddTask">
+        <activity android:name=".activities.AddTaskActivity">
         </activity>
-        <activity android:name=".activities.ParentTask" />
-        <activity android:name=".activities.ChildTask"></activity>
+        <activity android:name=".activities.ParentTaskActivity" />
+        <activity android:name=".activities.ChildTaskActivity"></activity>
     </application>
 
 </manifest>

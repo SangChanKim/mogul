@@ -12,18 +12,38 @@ public class Task implements Serializable{
     public String taskname;
     public boolean completed;
     public int reward;
+    public boolean waitingApproval;
+    public int taskUID;
 
     public Task() {
 
     }
 
-    public Task(String deadline, String description, String owner, String taskname, boolean completed, int reward) {
+    public Task(String deadline, String description, String owner, String taskname, boolean completed, int reward, boolean waitingApproval, String taskUID) {
         this.deadline = deadline;
         this.description = description;
         this.owner = owner;
         this.taskname = taskname;
         this.completed = completed;
         this.reward = reward;
+        this.waitingApproval = waitingApproval;
+    }
+
+
+    public void setWaitingApproval(boolean waitingApproval) {
+        this.waitingApproval = waitingApproval;
+    }
+
+    public boolean isWaitingApproval() {
+        return waitingApproval;
+    }
+
+    public void setTaskUID(int taskUID) {
+        this.taskUID = taskUID;
+    }
+
+    public int getTaskUID() {
+        return taskUID;
     }
 
 

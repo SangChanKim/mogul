@@ -2,12 +2,8 @@ package com.example.jxw679.mogul.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.SpannableString;
-import android.text.Spanned;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,17 +12,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Button;
-import android.text.Spannable;
-import android.text.style.RelativeSizeSpan;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.TextUtils;
 
 import com.example.jxw679.mogul.R;
 import com.example.jxw679.mogul.model.Child;
-import com.example.jxw679.mogul.model.Parent;
 import com.example.jxw679.mogul.model.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,7 +25,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
 import java.text.NumberFormat;
 
 import java.util.ArrayList;
@@ -44,11 +32,11 @@ import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
 
-public class ChildView extends AppCompatActivity {
+public class ChildViewActivity extends AppCompatActivity {
 
 
     private DatabaseReference mDatabase;
-    private static final String TAG = "ChildView";
+    private static final String TAG = "ChildViewActivity";
     public static Child child;
 
     public ArrayList<Task> data = new ArrayList<Task>();
@@ -67,7 +55,7 @@ public class ChildView extends AppCompatActivity {
                     new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            ChildView.child = dataSnapshot.getValue(Child.class);
+                            ChildViewActivity.child = dataSnapshot.getValue(Child.class);
 
                             child.setUsername(child.getEmail());
                             child.setUid(dataSnapshot.getKey());
@@ -135,12 +123,12 @@ public class ChildView extends AppCompatActivity {
                 convertView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(getApplicationContext(), ChildTask.class);
+                        Intent intent = new Intent(getApplicationContext(), ChildTaskActivity.class);
                         intent.putExtra("taskname", currentTask.taskname);
                         intent.putExtra("description", currentTask.description);
                         intent.putExtra("deadline", currentTask.deadline);
                         intent.putExtra("reward", String.valueOf(currentTask.reward));
-                        ChildView.this.startActivity(intent);
+                        ChildViewActivity.this.startActivity(intent);
                     }
                 });
 
