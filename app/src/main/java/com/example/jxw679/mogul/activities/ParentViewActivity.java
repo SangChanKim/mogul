@@ -49,14 +49,12 @@ public class ParentViewActivity extends AppCompatActivity {
     public static final String PARENT_OBJECT_EXTRA_TAG = "PARENT";
     public static final String CHILD_LIST_OBJECT_EXTRA_TAG = "CHILDLIST";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_view);
+
         mChildObjects = new ArrayList<Child>();
-
-
 
         mAddTaskButton = (ImageButton) findViewById(R.id.add_task);
         mAddTaskButton.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +163,7 @@ public class ParentViewActivity extends AppCompatActivity {
                 convertView = inflater.inflate(layout, parent, false);
                 ViewHolder viewHolder = new ViewHolder();
 
-                Child currentChild = (Child) this.getItem(position);
+                final Child currentChild = (Child) this.getItem(position);
                 viewHolder.profile_pic = (ImageView) convertView.findViewById(R.id.profile_pic);
                 viewHolder.name = (TextView) convertView.findViewById(R.id.child_name);
                 viewHolder.name.setText(currentChild.getFirstname());

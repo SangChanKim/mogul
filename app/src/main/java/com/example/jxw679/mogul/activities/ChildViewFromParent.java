@@ -2,8 +2,12 @@ package com.example.jxw679.mogul.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +16,19 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Button;
+import android.text.Spannable;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.TextUtils;
 
 import com.example.jxw679.mogul.R;
 import com.example.jxw679.mogul.model.Child;
+import com.example.jxw679.mogul.model.Parent;
 import com.example.jxw679.mogul.model.Task;
+import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +37,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.text.NumberFormat;
 
 import java.util.ArrayList;
@@ -32,11 +45,11 @@ import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
 
-public class ChildViewActivity extends AppCompatActivity {
+public class ChildViewFromParent extends AppCompatActivity {
 
 
     private DatabaseReference mDatabase;
-    private static final String TAG = "ChildViewActivity";
+    private static final String TAG = "ChildViewFromParent";
     public static Child child;
 
     public ArrayList<Task> data = new ArrayList<Task>();
@@ -45,45 +58,57 @@ public class ChildViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_child_view);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            String uid = user.getUid();
-            System.out.println("UID: " + uid);
-            mDatabase = FirebaseDatabase.getInstance().getReference();
-            mDatabase.child("users").child(uid).addListenerForSingleValueEvent(
-                    new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            ChildViewActivity.child = dataSnapshot.getValue(Child.class);
+        setContentView(R.layout.activity_child_view_from_parent);
 
-                            child.setUsername(child.getEmail());
-                            child.setUid(dataSnapshot.getKey());
+        Intent i = getIntent();
+        String uid = i.getStringExtra("child_uid");
+        ArrayList<Child> child_list = (ArrayList<Child>) i.getExtras().get("child_list");
 
-                            TextView childName = (TextView) findViewById(R.id.child_name);
-                            System.out.println(child.getFirstname());
-                            childName.setText(child.getFirstname() +  " " + child.getLastname());
+        System.out.println("child uid: " + uid);
+        System.out.println("child list: " + child_list);
 
-                            TextView balance = (TextView) findViewById(R.id.child_balance);
-                            System.out.println(child.getBalance());
-                            balance.setText("$" + String.valueOf(child.getBalance()));
-
-                            generateListContent();
-
-                            ListView lv = (ListView) findViewById(R.id.assigned_list);
-                            lv.setAdapter(new MyListAdapter(getApplicationContext(), R.layout.task_list_item, data));
-
-
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.w(TAG, "getUser:onCancelled", databaseError.toException());
-                        }
-                    });
-
-        } else {
-            System.out.println("Not logged in!");
+        for (Child chi : child_list) {
+            if (chi.getAccountid().equals(uid)) {
+                child = chi;
+                System.out.println("found a match");
+            }
+            System.out.println("chi" + chi.getAccountid());
+            System.out.println("uid:" + chi.getAccountid());
+            System.out.println();
         }
+
+        //String uid = user.getUid();
+        System.out.println("UID: " + uid);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("users").child(uid).addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //child = dataSnapshot.getValue(Child.class);
+                        System.out.println("child is: " + child);
+
+                        child.setUsername(child.getEmail());
+                        child.setUid(dataSnapshot.getKey());
+
+                        TextView childName = (TextView) findViewById(R.id.child_name);
+                        System.out.println(child.getFirstname());
+                        childName.setText(child.getFirstname() +  " " + child.getLastname());
+                        TextView balance = (TextView) findViewById(R.id.child_balance);
+                        System.out.println(child.getBalance());
+                        balance.setText("$" + String.valueOf(child.getBalance()));
+                        generateListContent();
+
+                        ListView lv = (ListView) findViewById(R.id.assigned_list);
+                        lv.setAdapter(new MyListAdapter(getApplicationContext(), R.layout.task_list_item, data));
+
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.w(TAG, "getUser:onCancelled", databaseError.toException());
+                    }
+                });
+
     }
 
     private void generateListContent() {
@@ -123,12 +148,12 @@ public class ChildViewActivity extends AppCompatActivity {
                 convertView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(getApplicationContext(), ChildTaskActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), ChildTask.class);
                         intent.putExtra("taskname", currentTask.taskname);
                         intent.putExtra("description", currentTask.description);
                         intent.putExtra("deadline", currentTask.deadline);
                         intent.putExtra("reward", String.valueOf(currentTask.reward));
-                        ChildViewActivity.this.startActivity(intent);
+                        ChildViewFromParent.this.startActivity(intent);
                     }
                 });
 

@@ -19,14 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ParentViewActivity">
-        </activity>
-        <activity android:name=".activities.ChildViewActivity">
-        </activity>
-        <activity android:name=".activities.AddTaskActivity">
-        </activity>
-        <activity android:name=".activities.ParentTaskActivity" />
-        <activity android:name=".activities.ChildTaskActivity"></activity>
+        <activity android:name=".activities.ChildViewActivity"/>
+        <activity android:name=".activities.ChildViewFromParent"/>
+        <activity android:name=".activities.ChildTaskActivity"/>
+        <activity android:name=".activities.AddTaskActivity"/>
+        <activity android:name=".activities.ParentTaskActivity"/>
+        <activity android:name=".activities.ParentViewActivity"/>
     </application>
 
 </manifest>
