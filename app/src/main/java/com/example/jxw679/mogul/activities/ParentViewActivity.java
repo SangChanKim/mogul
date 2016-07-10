@@ -40,7 +40,7 @@ public class ParentViewActivity extends AppCompatActivity {
     private ImageButton mAddTaskButton;
     private ListView mListOfChildren;
     private MyListAdapter mListAdapter;
-    private FirebaseUser mCurrentUser;
+    private FirebaseUser mCurrentFirebaseUser;
 
     private Parent currentUser;
     private ArrayList<Child> mChildObjects;
@@ -61,8 +61,8 @@ public class ParentViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =  new Intent(getApplicationContext(), AddTaskActivity.class);
-                intent.putExtra(PARENT_OBJECT_EXTRA_TAG, mChildObjects);
-                intent.putExtra(CHILD_LIST_OBJECT_EXTRA_TAG, currentUser);
+                intent.putExtra(PARENT_OBJECT_EXTRA_TAG, currentUser);
+                intent.putExtra(CHILD_LIST_OBJECT_EXTRA_TAG, mChildObjects);
                 startActivityForResult(intent, 123);
             }
         });
@@ -73,9 +73,9 @@ public class ParentViewActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 System.out.println("onRefresh()");
-                mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-                if (mCurrentUser != null) {
-                    updateParentObject(mCurrentUser.getUid(), true);
+                mCurrentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                if (mCurrentFirebaseUser != null) {
+                    updateParentObject(mCurrentFirebaseUser.getUid(), true);
                     if (mListAdapter != null) {
                         mListAdapter.notifyDataSetChanged();
                     }
@@ -85,9 +85,9 @@ public class ParentViewActivity extends AppCompatActivity {
         });
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (mCurrentUser != null) {
-            updateParentObject(mCurrentUser.getUid(), true);
+        mCurrentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (mCurrentFirebaseUser != null) {
+            updateParentObject(mCurrentFirebaseUser.getUid(), true);
         }
     }
 

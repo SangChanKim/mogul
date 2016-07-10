@@ -148,7 +148,7 @@ public class ChildViewFromParent extends AppCompatActivity {
                 convertView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(getApplicationContext(), ChildTask.class);
+                        Intent intent = new Intent(getApplicationContext(), ChildTaskActivity.class);
                         intent.putExtra("taskname", currentTask.taskname);
                         intent.putExtra("description", currentTask.description);
                         intent.putExtra("deadline", currentTask.deadline);
