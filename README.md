@@ -21,3 +21,6 @@ Mogul is a service that teaches young kids how to earn, spend, and grow their mo
 ### Awards 
 Won 2nd place in web/mobile at the Capital One Carbon 2016 Hackathon
 
+## Backend
+[Link to repo](https://github.com/sangchankim/mogul-node)
+
