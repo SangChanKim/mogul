@@ -7,7 +7,7 @@ Mogul is a service that teaches young kids how to earn, spend, and grow their mo
 * Assign tasks to your kids with monetary rewards as incentives to complete the tasks
 * Create long-term reward benefits for your kids to keep money in their account instead of spending them
 
-## Backend
+### Backend
 [Link to repo](https://github.com/sangchankim/mogul-node)
 
 ### Awards 
